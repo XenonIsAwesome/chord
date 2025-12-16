@@ -35,10 +35,6 @@ target_link_libraries(gtest_exec PRIVATE utils_lib impl_lib GTest::gtest_main)
 target_compile_definitions(gtest_exec PUBLIC WITH_TEST_FAIL_LOGS)
 # =======================================================================================================
 
-
-message(${CMAKE_CURRENT_SOURCE_DIR}/library/smoke_tests_generated.test.cpp)
-message(${CMAKE_CURRENT_SOURCE_DIR}/utils/generate_smoke_tests.py)
-
 find_package(Python3 REQUIRED COMPONENTS Interpreter)
 
 

@@ -14,7 +14,7 @@ int main() {
     float m = 0;
     chord::compute_mean_value<float>(a, m);
 
-    std::cout << chord::combine_with_scalar<float>(a, 4.3, d_a);
+    std::cout << chord::combine_with_scalar<float>(a, 4.3, d_a) << std::endl;
 
     for (auto val : d_a) {
         std::cout << val << std::endl;
