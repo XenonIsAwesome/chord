@@ -12,7 +12,7 @@ HEADER_FILE = Path(args.header)
 OUTPUT_FILE = Path(args.output)
 
 FILE_INCLUDES = """#include <gtest/gtest.h>
-#include <lib.hpp>
+#include <chord/lib.hpp>
 #include "smoke_tests_generated.hpp"
 """
 

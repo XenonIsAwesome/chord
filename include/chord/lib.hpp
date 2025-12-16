@@ -8,8 +8,7 @@
  */
 #define AUTO_INIT() std::call_once(chord_once_flag, chord::impl::init)
 
-#include "chord_status.hpp"
-
+#include <chord/chord_status.hpp>
 #include <complex>
 #include <span>
 
@@ -1027,6 +1026,6 @@ StatusResult compute_complex_exponent(std::span<const T> src, std::span<std::com
 
 }  // namespace chord
 
-#include "lib.tpp"
+#include <chord/lib.tpp>
 
 #endif

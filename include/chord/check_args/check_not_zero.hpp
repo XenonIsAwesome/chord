@@ -4,8 +4,8 @@
 
 #pragma once
 
+#include <chord/chord_status.hpp>
 #include <ranges>
-#include <chord_status.hpp>
 
 namespace utils::check {
 /**

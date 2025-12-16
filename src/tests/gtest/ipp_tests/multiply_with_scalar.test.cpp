@@ -6,8 +6,8 @@
 #include "random_generate/random_utils.hpp"
 #include "utils/test_functions_helpers.hpp"
 
+#include <chord/lib.hpp>
 #include <gtest/gtest.h>
-#include <lib.hpp>
 
 
 TEST(IPP_MultiplyWithScalar, Float) {

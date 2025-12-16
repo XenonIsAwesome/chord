@@ -4,18 +4,18 @@
 #include "ipp_wrappers/ipp_wrappers.hpp"
 #include "types/casts/cast.hpp"
 
-#include <chord_status.hpp>
+#include <chord/chord_status.hpp>
 #include <functional>
 #include <iostream>
 
 #ifdef INTEL_PRESENT
-#if __has_include(<ipp/ippversion.h>)
-#include <ipp/ipp.h>
-#elif __has_include(<ippversion.h>)
-#    include <ipp.h>
-#else
-#    error "IPP Version not supported"
-#endif
+#    if __has_include(<ipp/ippversion.h>)
+#        include <ipp/ipp.h>
+#    elif __has_include(<ippversion.h>)
+#        include <ipp.h>
+#    else
+#        error "IPP Version not supported"
+#    endif
 #endif
 
 #include <lib.hpp>

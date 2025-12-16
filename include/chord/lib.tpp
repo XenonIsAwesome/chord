@@ -4,10 +4,9 @@
 
 #pragma once
 
-#include "check_args/check_equal_sizes.hpp"
-#include "check_args/check_not_zero.hpp"
-
-#include <lib_impl.hpp>
+#include <chord/check_args/check_equal_sizes.hpp>
+#include <chord/check_args/check_not_zero.hpp>
+#include <chord/lib_impl.hpp>
 
 namespace chord {
 
@@ -316,11 +315,10 @@ StatusResult find_maximum(std::span<const T> src, T& max) {
 
 
 template<typename T>
-StatusResult
-compute_dot_product(std::span<const T> src1, std::span<const T> src2, T& dst) {
-    CHECK_NOT_EMPTY_RETURN_STATUS(src1, src2, dst);
+StatusResult compute_dot_product(std::span<const T> src1, std::span<const T> src2, T& dst) {
+    CHECK_NOT_EMPTY_RETURN_STATUS(src1, src2);
 
-    CHECK_EQUAL_SIZE_RETURN_STATUS(src1, src2, dst);
+    CHECK_EQUAL_SIZE_RETURN_STATUS(src1, src2);
 
     return impl::compute_dot_product(src1, src2, dst);
 }

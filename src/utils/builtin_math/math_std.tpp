@@ -6,7 +6,7 @@
 
 
 #include <algorithm>
-#include <chord_types.hpp>
+#include <chord/chord_types.hpp>
 #include <cmath>
 #include <complex>
 #include <iostream>

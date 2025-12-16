@@ -45,9 +45,9 @@ find_package(Python3 REQUIRED COMPONENTS Interpreter)
 add_custom_command(
         OUTPUT ${CMAKE_CURRENT_SOURCE_DIR}/library/smoke_tests_generated.test.cpp
         COMMAND ${Python3_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/utils/generate_smoke_tests.py
-        --header ${CMAKE_SOURCE_DIR}/include/lib.hpp
+        --header ${CMAKE_SOURCE_DIR}/include/chord/lib.hpp
         --output ${CMAKE_CURRENT_SOURCE_DIR}/library/smoke_tests_generated.test.cpp
-        DEPENDS ${CMAKE_SOURCE_DIR}/include/lib.hpp
+        DEPENDS ${CMAKE_SOURCE_DIR}/include/chord/lib.hpp
         COMMENT "Generating smoke tests"
         WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
 )
@@ -68,16 +68,19 @@ target_link_libraries(smoke_tests GTest::gtest_main pthread impl_lib)
 # -------------------------------------------------------------------------------------------------------
 find_package(Threads REQUIRED)
 
-find_package(GTest REQUIRED)
+find_package(GTest)
 if (NOT GTest_FOUND)
     message(STATUS "Fetching gtest")
 
     include(FetchContent)
     FetchContent_Declare(
-            gtest
-            GIT https://gitlab.cerf.net/internet/google/googletest.git
+            googletest
+            GIT_REPOSITORY https://github.com/google/googletest.git
+            GIT_TAG v1.14.0
     )
-    FetchContent_MakeAvailable(gtest)
+    # For Windows: Prevent overriding the parent project's compiler/linker settings
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
 endif ()
 
 include(GoogleTest)

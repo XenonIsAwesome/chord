@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <chord_structs.hpp>
+#include <chord/chord_structs.hpp>
 
 namespace ipp::wrappers {
 
@@ -13,4 +13,4 @@ template<>
 IppStatus
 compute_mean_value<float>(std::span<const float> src, float& mean, chord::AlgoChoice algo, int len);
 
-}
+}  // namespace ipp::wrappers

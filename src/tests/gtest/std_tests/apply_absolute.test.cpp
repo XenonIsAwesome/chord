@@ -2,10 +2,10 @@
 // Created by mayak on 6/25/25.
 //
 
-#include "lib.hpp"
 #include "builtin_math/math_std.hpp"
 #include "utils/test_functions_helpers.hpp"
 
+#include <chord/lib.hpp>
 #include <gtest/gtest.h>
 
 

@@ -4,8 +4,7 @@
 
 #pragma once
 
-#include "chord_types.hpp"
-
+#include <chord/chord_types.hpp>
 #include <span>
 
 

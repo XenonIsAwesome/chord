@@ -22,8 +22,8 @@ if(NOT benchmark_FOUND)
     set(BENCHMARK_USE_BUNDLED_GTEST OFF)
     FetchContent_Declare(
             benchmark
-            GIT_REPOSITORY http://old-gitlab.cerf.net/internet/google/benchmark.git
-            GIT_TAG main
+            GIT_REPOSITORY https://github.com/google/benchmark.git
+            GIT_TAG v1.8.3
     )
     FetchContent_MakeAvailable(benchmark)
 endif()

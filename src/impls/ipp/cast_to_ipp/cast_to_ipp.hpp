@@ -4,7 +4,7 @@
 
 #pragma once
 
-#include <chord_structs.hpp>
+#include <chord/chord_structs.hpp>
 #include <complex>  // this is for the types in .inl file
 
 namespace ipp::types {

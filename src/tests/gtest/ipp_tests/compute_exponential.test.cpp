@@ -8,7 +8,7 @@
 #include "random_generate/random_utils.hpp"
 #include "utils/test_functions_helpers.hpp"
 
-#include <check_args/check_not_zero.hpp>
+#include <chord/check_args/check_not_zero.hpp>
 #include <complex>
 #include <gtest/gtest.h>
 

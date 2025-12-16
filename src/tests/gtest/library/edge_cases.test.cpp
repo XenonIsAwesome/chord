@@ -2,8 +2,8 @@
 // Created by mayak on 8/17/25.
 //
 
+#include <chord/lib.hpp>
 #include <gtest/gtest.h>
-#include <lib.hpp>
 
 /**
  * Checking that when two srcs of different lengths are given to function from library the function

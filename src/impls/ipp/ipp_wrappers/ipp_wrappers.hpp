@@ -4,18 +4,18 @@
 
 #pragma once
 
-#include <chord_structs.hpp>
+#include <chord/chord_structs.hpp>
 #include <complex>
 #include <iostream>
 
 #ifdef INTEL_PRESENT
-#if __has_include(<ipp/ippversion.h>)
-#include <ipp/ipp.h>
-#elif __has_include(<ippversion.h>)
-#    include <ipp.h>
-#else
-#    error "IPP Version not supported"
-#endif
+#    if __has_include(<ipp/ippversion.h>)
+#        include <ipp/ipp.h>
+#    elif __has_include(<ippversion.h>)
+#        include <ipp.h>
+#    else
+#        error "IPP Version not supported"
+#    endif
 #endif
 
 #include <span>

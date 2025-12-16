@@ -3,8 +3,8 @@
 
 #include "builtin_math/math_std.hpp"
 
-#include <chord_status.hpp>
-#include <chord_structs.hpp>
+#include <chord/chord_status.hpp>
+#include <chord/chord_structs.hpp>
 #include <iostream>
 #include <mutex>
 #include <span>
@@ -231,8 +231,7 @@ StatusResult find_maximum(std::span<const T> src, T& max) {
 
 
 template<typename T>
-StatusResult
-compute_dot_product(std::span<const T> src1, std::span<const T> src2, std::span<T> dst) {
+StatusResult compute_dot_product(std::span<const T> src1, std::span<const T> src2, T& dst) {
     // FUNC_CALL_TO_STATUS(math_std::)
     // TODO: emmm checkimpl
     return StatusResult();
@@ -321,7 +320,6 @@ StatusResult divide_list_by_list_inplace(std::span<const T> src_divided,
                                          std::span<T> src_divisors_dst) {
     FUNC_CALL_TO_STATUS(math_std::divide_list_by_list_inplace(src_divided, src_divisors_dst));
 }
-
 
 
 // template<typename T>
