@@ -81,6 +81,9 @@ endif ()
 
 include(GoogleTest)
 
-gtest_discover_tests(gtest_exec DISCOVERY_TIMEOUT 120)
+if (CHORD_BUILD_TOOLS)
+    gtest_discover_tests(gtest_exec DISCOVERY_TIMEOUT 120)
+    gtest_discover_tests(smoke_tests DISCOVERY_TIMEOUT 120)
+endif()
 # =======================================================================================================
 

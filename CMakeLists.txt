@@ -102,6 +102,8 @@ add_subdirectory(src/impls)
 # add tests
 if (CHORD_ENABLE_TESTS)
     message(STATUS "Enabled Tests, Running")
+    include(CTest)
+    enable_testing()
     add_subdirectory(src/tests)
 endif ()
 
