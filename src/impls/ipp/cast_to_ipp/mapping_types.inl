@@ -1,0 +1,7 @@
+X(float, Ipp32f)
+X(double, Ipp64f)
+X(int, Ipp32s)
+X(unsigned char, Ipp8u)
+X(char, Ipp8s)
+X(std::complex<float>, Ipp32fc)
+X(std::complex<double>, Ipp64fc)

@@ -1,0 +1,6 @@
+.idea
+.cache/
+cmake-build-*/
+build
+*.out
+*.o

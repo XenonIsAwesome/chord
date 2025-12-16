@@ -1,0 +1,72 @@
+stages:
+  - static_testing
+  - build
+  - test
+
+variables:
+  BUILD_DIR: build
+
+Merge Conflict Test:
+  stage: static_testing
+  image: 192.168.10.15:5000/super-star:popd-git-config
+  tags:
+    - general
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: always
+    - when: never
+  before_script:
+    - git config --global user.email "ci@turing"
+    - git config --global user.name "fi pipeline"
+  script:
+    - git fetch origin $CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - git rebase origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME
+    - git merge origin/$CI_MERGE_REQUEST_TARGET_BRANCH_NAME --no-commit --no-ff || { echo "Automatic merge failed please resolve conflicts and run pipeline again..."; exit 1 ; }
+    - echo "Automatic merge successful..."
+# TODO: remove after first merge of dev to master.
+
+Build All:
+  tags:
+    - general
+  stage: build
+  image: 192.168.10.15:5000/build-runner:v2.0.1-uhd_4.1.2
+  before_script:
+    - git config --global user.email "ci@turing"
+    - git config --global user.name "fi pipeline"
+  script:
+    - mkdir build/ && cd build/
+    - ls
+    - cmake .
+    - cmake --build . --target main-exec
+    - cmake --build . --target gtest_exec
+#    - cmake --build $BUILD_DIR --target libscorpion-core-benchmark
+
+Test GTest:
+  tags:
+    - general
+  stage: test
+  script:
+    - cmake --build $BUILD_DIR --target gtest_exec
+    - ./$BUILD_DIR/src/tests/gtest/gtest_exec
+  #    - ./$BUILD_DIR/core/test/libscorpion-core-gtest
+  needs:
+    - Build All
+
+#Test Benchmark:
+#  tags:
+#    - general
+#  stage: test
+#  script:
+#    - cmake --build $BUILD_DIR --target libscorpion-core-benchmark
+#    - ./$BUILD_DIR/core/test/libscorpion-core-benchmark | tee ./out/benchmark.log
+#  needs:
+#    - Build All
+#  artifacts:
+#    paths:
+#      - ./out/
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_TAG
